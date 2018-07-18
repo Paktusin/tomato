@@ -1,0 +1,11 @@
+{
+  "name": "tomatoClient",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "babel-loader": "^7.1.5",
+    "babel-preset-react": "^6.24.1",
+    "gh-pages": "^1.2.0"
+  }
+}
