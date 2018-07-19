@@ -6320,6 +6320,7 @@ em {
   color: #fa320a; }
 
 .movie {
+  cursor: pointer;
   padding: .5rem;
   transition: all .1s ease;
   height: 200px;
@@ -6339,6 +6340,7 @@ em {
     .movie .movie-container.fresh, .movie .movie-container.certified_fresh {
       border: 1px solid #fa320a; }
       .movie .movie-container.fresh .title, .movie .movie-container.certified_fresh .title {
+        text-align: center;
         background-color: #fa320a; }
     .movie .movie-container .poster {
       z-index: 1;
@@ -6352,11 +6354,9 @@ em {
     .movie .movie-container .body {
       width: 100%;
       line-height: 1.1rem;
-      max-width: 50%;
-      padding: .2rem; }
+      max-width: 50%; }
       .movie .movie-container .body .title {
-        padding: .5rem;
-        margin: -.3rem -.8rem .5rem -.3rem;
+        text-align: center;
         color: white;
         font-size: 1.3rem;
         font-weight: bold; }
@@ -6368,4 +6368,10 @@ em {
     text-decoration: none;
     color: #000;
     transform: scale(1.05); }
+
+.movie-modal p {
+  margin-bottom: 0; }
+
+.movie-modal .trailer video {
+  width: 100%; }
 
