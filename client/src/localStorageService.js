@@ -34,7 +34,6 @@ export default class LocalStorageService {
     }
 
     fresh(name, time) {
-        console.log(time, this.time(name));
         return this.has(name) && this.time(name) > time
     }
 }

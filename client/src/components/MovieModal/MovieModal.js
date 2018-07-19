@@ -2,7 +2,6 @@ import React from 'react';
 import './MovieModal.scss';
 
 const MovieModal = (props) => {
-    console.log(props);
     const movie = props.movie;
     return (
         <div className="movie-modal">
