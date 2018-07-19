@@ -8,9 +8,8 @@ const icons = {fresh, rotten, certified_fresh};
 
 const Movie = (props) => {
     const movie = props.movie;
-    console.log(movie);
     return (
-        <a className="movie" href={`#/${movie.id}`}>
+        <div className="movie" onClick={props.onClick}>
             <div className={"movie-container " + movie.tomatoIcon}>
                 <div className="poster" style={{backgroundImage: `url(${movie.posters.primary})`}}/>
                 <div className={"body"}>
@@ -20,9 +19,10 @@ const Movie = (props) => {
                         {movie.tomatoScore}%
                     </div>
                     <p>{movie.theaterReleaseDate}</p>
+                    <p>Actors: {movie.actors.join(', ')}</p>
                 </div>
             </div>
-        </a>
+        </div>
     );
 };
 

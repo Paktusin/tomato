@@ -5,6 +5,7 @@ em {
 }
 
 .movie {
+  cursor: pointer;
   padding: .5rem;
   transition: all .1s ease;
   height: 200px;
@@ -22,6 +23,7 @@ em {
       border: 1px solid $primary_color;
       //box-shadow: 0 0 1rem $primary_color;
       .title {
+        text-align: center;
         background-color: $primary_color;
       }
     }
