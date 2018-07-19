@@ -11,14 +11,15 @@ const Movie = (props) => {
     console.log(movie);
     return (
         <a className="movie" href={`#/${movie.id}`}>
-            <div className="movie-container">
+            <div className={"movie-container " + movie.tomatoIcon}>
                 <div className="poster" style={{backgroundImage: `url(${movie.posters.primary})`}}/>
                 <div className={"body"}>
-                <div className="tomato">
-                    <img src={icons[movie.tomatoIcon]}/>
-                    {movie.tomatoScore}%
-                </div>
-                <span className="title">{movie.title}</span>
+                    <div className="title">{movie.title}</div>
+                    <div className="tomato">
+                        <img src={icons[movie.tomatoIcon]}/>
+                        {movie.tomatoScore}%
+                    </div>
+                    <p>{movie.theaterReleaseDate}</p>
                 </div>
             </div>
         </a>
