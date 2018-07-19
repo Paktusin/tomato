@@ -1,0 +1,15 @@
+@import "var";
+@import url('https://fonts.googleapis.com/css?family=Gaegu:400,700');
+
+$primary: $primary_color;
+$secondary: $secondary_color;
+$font-family-base: 'Gaegu';
+$headings-font-weight: 700;
+
+@import "../node_modules/bootstrap/scss/bootstrap";
+
+* {
+  :focus {
+    outline: none;
+  }
+}

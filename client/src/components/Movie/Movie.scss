@@ -1,0 +1,47 @@
+@import "../../var";
+
+em {
+  color: $primary_color;
+}
+
+.movie {
+  padding: .5rem;
+  height: 200px;
+  color: #000;
+  display: flex;
+  .movie-container {
+    border-radius: .3rem;
+    overflow: hidden;
+    box-shadow: 0 0 1rem #666;
+    display: flex;
+    flex: 1 auto;
+    .poster {
+      display: flex;
+      flex: 1 auto;
+      background-position: center;
+      background-size: cover;
+      background-repeat: no-repeat;
+      max-width: 50%;
+      width: 50%;
+    }
+    .body {
+      max-width: 50%;
+      padding: .2rem;
+      .title {
+
+      }
+      .tomato {
+        img {
+          margin: 0 .2rem;
+          width: 15px;
+          height: 15px;
+        }
+      }
+    }
+  }
+
+  &:hover {
+    text-decoration: none;
+    color: #000;
+  }
+}

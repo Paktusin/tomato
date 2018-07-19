@@ -1,6 +1,7 @@
 import React from "react";
 import axios from 'axios';
 import Aux from "./Aux";
+import MovieList from "./components/MovieList/MovieList";
 
 const API_URL = 'https://carcat.paktusin.beget.tech:8080/';
 
@@ -24,17 +25,15 @@ class App extends React.Component {
 
     getMovies() {
         axios.get(API_URL, {params: this.state.filter}).then(res => {
-            console.log(res.data)
             this.setState({...this.state, movies: res.data.results})
         })
     }
 
     render() {
-        const movies = this.state.movies;
         return (
-            <Aux>
-                {movies.map(movie => <h1 key={movie.id}>{movie.title}</h1>)}
-            </Aux>
+            <div className="container-fluid">
+                <MovieList movies={this.state.movies}/>
+            </div>
         )
     }
 }

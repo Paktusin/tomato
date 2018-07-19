@@ -1,6 +1,6 @@
 import ReactDOM from 'react-dom';
 import React from 'react';
-import 'mini.css/src/flavors/mini-default.scss'
+import './index.scss'
 import App from "./App";
 
 
