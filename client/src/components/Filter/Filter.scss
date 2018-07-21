@@ -1,0 +1,12 @@
+.filter{
+  .inline-check{
+    .form-check{
+      float: left;
+      display: flex;
+      input{
+        margin-top: 0.3rem;
+        margin-right: .3rem;
+      }
+    }
+  }
+}

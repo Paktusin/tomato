@@ -1,8 +1,7 @@
 import React from 'react';
 import def_filter from '../../../../back/filter';
 import genres from '../../genres';
-import Aux from "../../Aux";
-
+import './Filter.scss'
 class Filter extends React.Component {
     state = {filter: {...def_filter, genres: ''}};
 
@@ -18,7 +17,8 @@ class Filter extends React.Component {
         }
         this.setState({
             filter: {...this.state.filter, genres: genres.join(';')}
-        })
+        });
+        this.props.changeFilter();
     }
 
     getGenres() {
@@ -37,32 +37,28 @@ class Filter extends React.Component {
         const filter = this.state.filter;
         const selected_genres = this.getGenres();
         return (
-            <div>
-                <div className={"form-group"}>
-                    <label>Min Tomato</label>
-                    <input className="form-control" type="number" min="0" max="100" value={filter.minTomato}
-                           onChange={(e) => {
-                               this.tomatoChange('minTomato', e.target.value)
-                           }}/>
-                </div>
-                <div className={"form-group"}>
-                    <label>Max Tomato</label>
-                    <input className="form-control" type="number" min="0" max="100" value={filter.maxTomato}
-                           onChange={(e) => {
-                               this.tomatoChange('maxTomato', e.target.value)
-                           }}/>
-                </div>
-                <div className={"form-group"}>
-                    <label>Genres</label>
-                    {Object.keys(genres).map(key =>
-                        <Aux key={key}>
-                            <input type={"checkbox"}
-                                   value={key}
-                                   checked={selected_genres.indexOf(key) !== -1}
-                                   onChange={this.genreChange.bind(this)}/>
-                            <label>{genres[key]}</label>
-                        </Aux>
-                    )}
+            <div className="row filter">
+                {/*<div className={"form-group col-6 col-sm-4 col-lg-2"}>*/}
+                {/*<label>Min Tomato</label>*/}
+                {/*<input className="form-control" type="number" min="0" max="100" value={filter.minTomato}*/}
+                {/*onChange={(e) => {*/}
+                {/*this.tomatoChange('minTomato', e.target.value)*/}
+                {/*}}/>*/}
+                {/*</div>*/}
+                <div className={"form-group col"}>
+                    <label>Genres:</label>
+                    <div className={"inline-check"}>
+                        {Object.keys(genres).map(key =>
+                            <div className="form-check" key={key}>
+                                <input type={"checkbox"}
+                                       value={key}
+                                       id={'genre' + key}
+                                       checked={selected_genres.indexOf(key) !== -1}
+                                       onChange={this.genreChange.bind(this)}/>
+                                <label htmlFor={'genre' + key}>{genres[key]}</label>
+                            </div>
+                        )}
+                    </div>
                 </div>
             </div>
         );
