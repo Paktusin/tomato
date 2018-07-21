@@ -21,7 +21,7 @@ app.use(function (req, res, next) {
 
 const API_URL = 'https://www.rottentomatoes.com/api/private/v2.0/browse?';
 
-app.use((req, res, next) => {
+app.get((req, res, next) => {
     const params = Object.assign(require('./filter'), req.query);
     request(API_URL + querystring.stringify(params), {
         json: true,
@@ -34,8 +34,9 @@ app.use((req, res, next) => {
 app.get('/find/:path', (req, res, next) => {
     request('https://www.rottentomatoes.com/m/' + req.params.path, (err, result, body) => {
         const $ = cheerio.load(body);
-        const image = $('.heroImage.movie').css('background-image').replace("url('");
-        if (!movie) return next();
+        const imageEl = $('.heroImage.movie');
+        if (imageEl.length === 0) return next();
+        const image = imageEl.css('background-image').replace("url('", '').replace("')", '');
         res.json({
             image
         });
