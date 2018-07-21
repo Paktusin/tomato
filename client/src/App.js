@@ -4,6 +4,7 @@ import MovieList from "./components/MovieList/MovieList";
 import {Modal, ModalBody, ModalFooter} from "reactstrap";
 import MovieModal from "./components/MovieModal/MovieModal";
 import tomato from './assets/fresh.png';
+import Filter from "./components/Filter/Filter";
 
 const API_URL = 'https://carcat.paktusin.beget.tech:8080/';
 
@@ -50,7 +51,8 @@ class App extends React.Component {
 
     render() {
         return (
-            <div className="container-fluid">
+            <div className="container-fluid app">
+                <Filter/>
                 <MovieList movies={this.state.movies} movieSelect={this.movieSelect.bind(this)} moreClick={this.showMore.bind(this)}/>
                 <Modal isOpen={this.state.modalOpen} toggle={this.toggleModal.bind(this)}
                        className={"modal-lg"}>

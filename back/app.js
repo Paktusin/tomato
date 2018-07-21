@@ -4,6 +4,7 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const request = require('request');
 const querystring = require('querystring');
+const cheerio = require('cheerio');
 require('dotenv').config();
 
 const app = express();
@@ -19,24 +20,26 @@ app.use(function (req, res, next) {
 });
 
 const API_URL = 'https://www.rottentomatoes.com/api/private/v2.0/browse?';
-const def_params = {
-    minTomato: 0,
-    minPopcorn: 0,
-    maxTomato: 100,
-    maxPopcorn: 100,
-    sortBy: 'release',
-    type: 'dvd-streaming-all',
-    page: 1
-};
 
 app.use((req, res, next) => {
-    const params = Object.assign(def_params, req.query);
+    const params = Object.assign(require('./filter'), req.query);
     request(API_URL + querystring.stringify(params), {
         json: true,
     }, (err, result, body) => {
         if (err) res.json(err);
         res.send(body);
     })
+});
+
+app.get('/find/:path', (req, res, next) => {
+    request('https://www.rottentomatoes.com/m/' + req.params.path, (err, result, body) => {
+        const $ = cheerio.load(body);
+        const image = $('.heroImage.movie').css('background-image').replace("url('");
+        if (!movie) return next();
+        res.json({
+            image
+        });
+    });
 });
 
 app.use(function (req, res, next) {
