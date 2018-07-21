@@ -21,7 +21,7 @@ app.use(function (req, res, next) {
 
 const API_URL = 'https://www.rottentomatoes.com/api/private/v2.0/browse?';
 
-app.get((req, res, next) => {
+app.get('/',(req, res, next) => {
     const params = Object.assign(require('./filter'), req.query);
     request(API_URL + querystring.stringify(params), {
         json: true,
