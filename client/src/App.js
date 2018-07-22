@@ -12,15 +12,16 @@ class App extends React.Component {
     state = {
         movies: [],
         selectedMovie: null,
-        modalOpen: false
+        modalOpen: false,
+        filter: null
     };
 
     componentDidMount() {
         //this.getMovies();
     }
 
-    getMovies(filter) {
-        axios.get(API_URL, {params: filter}).then(res => {
+    getMovies() {
+        axios.get(API_URL, {params: this.state.filter}).then(res => {
             this.setState({...this.state, movies: res.data.results})
         })
     }
@@ -40,15 +41,18 @@ class App extends React.Component {
         })
     }
 
-    changeFilter(filter){
-        this.getMovies(filter);
+    changeFilter(filter) {
+        this.setState({...this.state, filter},()=>{
+            this.getMovies();
+        });
     }
 
     render() {
         return (
             <div className="container-fluid app">
                 <Filter changeFilter={this.changeFilter.bind(this)}/>
-                <MovieList movies={this.state.movies} movieSelect={this.movieSelect.bind(this)} moreClick={this.showMore.bind(this)}/>
+                <MovieList movies={this.state.movies} movieSelect={this.movieSelect.bind(this)}
+                           moreClick={this.showMore.bind(this)}/>
                 <Modal isOpen={this.state.modalOpen} toggle={this.toggleModal.bind(this)}
                        className={"modal-lg"}>
                     <ModalBody>

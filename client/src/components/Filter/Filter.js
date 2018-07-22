@@ -3,13 +3,16 @@ import def_filter from '../../../../back/filter';
 import genres from '../../genres';
 import './Filter.scss'
 import LocalStorageService from "../../localStorageService";
+import Aux from "../../Aux";
+
 const storage = new LocalStorageService('tomato');
 
 class Filter extends React.Component {
-    constructor(props){
+    constructor(props) {
         super(props);
         this.state = {
-            filter : {...def_filter, genres: '',...storage.get('filter')}
+            filter: {...def_filter, genres: '', ...storage.get('filter')},
+            hidden: true
         }
     }
 
@@ -28,7 +31,7 @@ class Filter extends React.Component {
             filter: {...this.state.filter, genres: genres.join(';')}
         }, () => {
             this.props.changeFilter(this.state.filter);
-            storage.put('filter',this.state.filter)
+            storage.put('filter', this.state.filter)
         });
     }
 
@@ -44,34 +47,44 @@ class Filter extends React.Component {
         })
     }
 
+    toggle() {
+        this.setState({...this.state, hidden: !this.state.hidden})
+    }
+
     render() {
-        const filter = this.state.filter;
         const selected_genres = this.getGenres();
+        const is_active = selected_genres.length>0;
         return (
-            <div className="row filter">
-                {/*<div className={"form-group col-6 col-sm-4 col-lg-2"}>*/}
-                {/*<label>Min Tomato</label>*/}
-                {/*<input className="form-control" type="number" min="0" max="100" value={filter.minTomato}*/}
-                {/*onChange={(e) => {*/}
-                {/*this.tomatoChange('minTomato', e.target.value)*/}
-                {/*}}/>*/}
-                {/*</div>*/}
-                <div className={"form-group col"}>
-                    <label>Genres:</label>
-                    <div className={"inline-check"}>
-                        {Object.keys(genres).map(key =>
-                            <div className="form-check" key={key}>
-                                <input type={"checkbox"}
-                                       value={key}
-                                       id={'genre' + key}
-                                       checked={selected_genres.indexOf(key) !== -1}
-                                       onChange={this.genreChange.bind(this)}/>
-                                <label htmlFor={'genre' + key}>{genres[key]}</label>
-                            </div>
-                        )}
+            <Aux>
+                <button className={"filter-toggle "+(!this.state.hidden?'active':'')}
+                        onClick={this.toggle.bind(this)}>
+                    <span>{!this.state.hidden && 'hide '}filter{is_active && this.state.hidden ? 'ed '+selected_genres.length:''}</span>
+                </button>
+                <div className={"filter " + (this.state.hidden ? 'hidden' : '')}>
+                    {/*<div className={"form-group col-6 col-sm-4 col-lg-2"}>*/}
+                    {/*<label>Min Tomato</label>*/}
+                    {/*<input className="form-control" type="number" min="0" max="100" value={filter.minTomato}*/}
+                    {/*onChange={(e) => {*/}
+                    {/*this.tomatoChange('minTomato', e.target.value)*/}
+                    {/*}}/>*/}
+                    {/*</div>*/}
+                    <div className={"form-group col"}>
+                        <label>Genres:</label>
+                        <div className={"inline-check"}>
+                            {Object.keys(genres).map(key =>
+                                <div className="form-check" key={key}>
+                                    <input type={"checkbox"}
+                                           value={key}
+                                           id={'genre' + key}
+                                           checked={selected_genres.indexOf(key) !== -1}
+                                           onChange={this.genreChange.bind(this)}/>
+                                    <label htmlFor={'genre' + key}>{genres[key]}</label>
+                                </div>
+                            )}
+                        </div>
                     </div>
                 </div>
-            </div>
+            </Aux>
         );
     }
 }

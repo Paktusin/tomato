@@ -10,10 +10,11 @@ $headings-font-weight: 700;
 
 * {
   :focus {
-    outline: none;
+    outline: none!important;
   }
 }
 
 body{
   background-color: rgba($primary,.2);
 }
+

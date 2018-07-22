@@ -1,9 +1,40 @@
-.filter{
-  .inline-check{
-    .form-check{
+@import "../../var";
+
+.filter-toggle {
+  padding: .2rem;
+  position: fixed;
+  border-radius: 0 0 1rem 1rem;
+  z-index: 11;
+  border: 0;
+  background-color: $secondary_color;
+  color: black;
+  width: 100px;
+  left: calc(50% - 50px);
+  top: 0;
+  opacity: .7;
+  &.active {
+    background-color: $primary_color;
+    color: white;
+    opacity: 1;
+  }
+}
+
+.filter {
+  transition: left ease .3s;
+  &.hidden {
+    left: 100%;
+  }
+  position: fixed;
+  z-index: 10;
+  width: 100%;
+  top: 0;
+  left: 0;
+  background-color: $secondary_color;
+  .inline-check {
+    .form-check {
       float: left;
       display: flex;
-      input{
+      input {
         margin-top: 0.3rem;
         margin-right: .3rem;
       }
