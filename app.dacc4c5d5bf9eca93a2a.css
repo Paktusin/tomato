@@ -6311,7 +6311,7 @@ a.text-dark:hover, a.text-dark:focus {
     border-color: #dee2e6; } }
 
 * :focus {
-  outline: none; }
+  outline: none !important; }
 
 body {
   background-color: rgba(250, 50, 10, 0.2); }
@@ -6374,4 +6374,53 @@ em {
 
 .movie-modal .trailer video {
   width: 100%; }
+
+.movie-modal .poster {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative; }
+  .movie-modal .poster .title {
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    margin: 0;
+    text-align: center;
+    padding: 1rem; }
+
+.filter-toggle {
+  padding: .2rem;
+  position: fixed;
+  border-radius: 0 0 1rem 1rem;
+  z-index: 11;
+  border: 0;
+  background-color: #ffe400;
+  color: black;
+  width: 100px;
+  left: calc(50% - 50px);
+  top: 0;
+  opacity: .7; }
+  .filter-toggle.active {
+    background-color: #fa320a;
+    color: white;
+    opacity: 1; }
+
+.filter {
+  transition: left ease .3s;
+  position: fixed;
+  z-index: 10;
+  width: 100%;
+  top: 0;
+  left: 0;
+  background-color: #ffe400; }
+  .filter.hidden {
+    left: 100%; }
+  .filter .inline-check .form-check {
+    float: left;
+    display: flex; }
+    .filter .inline-check .form-check input {
+      margin-top: 0.3rem;
+      margin-right: .3rem; }
 
