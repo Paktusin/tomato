@@ -10,26 +10,17 @@ const API_URL = 'https://carcat.paktusin.beget.tech:8080/';
 
 class App extends React.Component {
     state = {
-        filter: {
-            minTomato: 0,
-            minPopcorn: 0,
-            maxTomato: 100,
-            maxPopcorn: 100,
-            sortBy: 'release',
-            type: 'dvd-streaming-all',
-            page: 1
-        },
         movies: [],
         selectedMovie: null,
         modalOpen: false
     };
 
     componentDidMount() {
-        this.getMovies();
+        //this.getMovies();
     }
 
-    getMovies() {
-        axios.get(API_URL, {params: this.state.filter}).then(res => {
+    getMovies(filter) {
+        axios.get(API_URL, {params: filter}).then(res => {
             this.setState({...this.state, movies: res.data.results})
         })
     }
@@ -50,7 +41,7 @@ class App extends React.Component {
     }
 
     changeFilter(filter){
-
+        this.getMovies(filter);
     }
 
     render() {

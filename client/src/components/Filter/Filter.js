@@ -2,10 +2,19 @@ import React from 'react';
 import def_filter from '../../../../back/filter';
 import genres from '../../genres';
 import './Filter.scss'
+import LocalStorageService from "../../localStorageService";
+const storage = new LocalStorageService('tomato');
+
 class Filter extends React.Component {
-    state = {filter: {...def_filter, genres: ''}};
+    constructor(props){
+        super(props);
+        this.state = {
+            filter : {...def_filter, genres: '',...storage.get('filter')}
+        }
+    }
 
     componentDidMount() {
+        this.props.changeFilter(this.state.filter);
     }
 
     genreChange(e) {
@@ -17,8 +26,10 @@ class Filter extends React.Component {
         }
         this.setState({
             filter: {...this.state.filter, genres: genres.join(';')}
+        }, () => {
+            this.props.changeFilter(this.state.filter);
+            storage.put('filter',this.state.filter)
         });
-        this.props.changeFilter();
     }
 
     getGenres() {
