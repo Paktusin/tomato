@@ -6,8 +6,8 @@ const MovieList = (props) => {
     return (
         <Aux>
             <div className="row">
-                {props.movies.map(movie =>
-                    <div key={movie.id} className="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 p-0" style={{overflow:'hidden'}}>
+                {props.movies.map((movie,key) =>
+                    <div key={key} className="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 p-0" style={{overflow:'hidden'}}>
                         <Movie movie={movie} onClick={props.movieSelect.bind(null, movie)}/>
                     </div>
                 )}
