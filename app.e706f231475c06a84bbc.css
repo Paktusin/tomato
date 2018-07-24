@@ -6391,7 +6391,8 @@ em {
     padding: 1rem; }
 
 .modal-body {
-  padding: 0; }
+  padding: 0;
+  overflow: hidden; }
 
 .filter-toggle {
   padding: .2rem;
