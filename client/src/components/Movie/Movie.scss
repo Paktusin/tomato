@@ -7,11 +7,12 @@ em {
 .movie {
   cursor: pointer;
   padding: .5rem;
-  transition: all .1s ease;
   height: 200px;
   color: #000;
   display: flex;
+  transition: all .1s ease;
   .movie-container {
+    transition: all .1s ease;
     &.rotten {
       //box-shadow: 0 0 1rem #04c754;
       border: 1px solid #04c754;
@@ -30,7 +31,6 @@ em {
     background-color: #fdfcf2;
     border-radius: .3rem;
     overflow: hidden;
-    box-shadow: 0 0 1rem #666;
     display: flex;
     flex: 1 auto;
     .poster {
@@ -64,8 +64,8 @@ em {
   }
 
   &:hover {
+    transform: scale(1.05);
     text-decoration: none;
     color: #000;
-    transform: scale(1.05);
   }
 }
