@@ -2,7 +2,7 @@ import React from 'react';
 import './MovieModal.scss';
 import axios from 'axios';
 
-const API_URL = 'https://carcat.paktusin.beget.tech:8080/';
+const API_URL = 'https://paktusin.ddns.net:8080/';
 
 class MovieModal extends React.Component {
     state = {image: null};
