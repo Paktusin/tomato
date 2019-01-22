@@ -8,7 +8,7 @@ class MovieModal extends React.Component {
     state = {image: null};
 
     componentDidMount() {
-        axios(API_URL + 'find/' + this.props.movie.url.replace('/m/', '')).then(res => {
+        axios(API_URL + 'find/' + this.props.movie.id).then(res => {
             this.setState({image: res.data.image});
         }).catch(() => {
         })
