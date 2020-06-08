@@ -1,9 +1,9 @@
 import React from 'react';
-import def_filter from '../../../../back/filter';
+import def_filter from '../../filter';
 import genres from '../../genres';
 import './Filter.scss'
 import LocalStorageService from "../../localStorageService";
-import Aux from "../../Aux";
+import Wrapper from "../../Wrapper";
 
 const storage = new LocalStorageService('tomato');
 
@@ -55,7 +55,7 @@ class Filter extends React.Component {
         const selected_genres = this.getGenres();
         const is_active = selected_genres.length>0;
         return (
-            <Aux>
+            <Wrapper>
                 <button className={"filter-toggle "+(!this.state.hidden?'active':'')}
                         onClick={this.toggle.bind(this)}>
                     <span>{!this.state.hidden && 'hide '}filter{is_active && this.state.hidden ? 'ed '+selected_genres.length:''}</span>
@@ -84,7 +84,7 @@ class Filter extends React.Component {
                         </div>
                     </div>
                 </div>
-            </Aux>
+            </Wrapper>
         );
     }
 }
