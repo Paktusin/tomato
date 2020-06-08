@@ -1,7 +1,6 @@
 import axios from "axios";
 
-const API_URL = 'http://localhost:8080/';
-//const API_URL = 'https://tomato-279711.ey.r.appspot.com/';
+const API_URL = 'https://tomato-279711.ey.r.appspot.com/';
 
 export default {
     findMovie(path){
