@@ -1,16 +1,13 @@
 import React from 'react';
 import './MovieModal.scss';
-import axios from 'axios';
-
-const API_URL = 'https://paktusin.ddns.net:8080/';
+import apiService from "../../apiService";
 
 class MovieModal extends React.Component {
     state = {image: null};
 
     componentDidMount() {
-        axios(API_URL + 'find/' + this.props.movie.id).then(res => {
+        apiService.findMovie(this.props.movie.url.replace('/m/', '')).then(res => {
             this.setState({image: res.data.image});
-        }).catch(() => {
         })
     }
 

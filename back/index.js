@@ -3,7 +3,7 @@ const http = require('http');
 const https = require('https');
 const app = require('./app');
 
-let port = process.env.PORT || 3000;
+let port = process.env.PORT || 8080;
 
 const ssl_key = process.env.SSL_KEY;
 const ssl_cert = process.env.SSL_CERT;

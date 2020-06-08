@@ -1,12 +1,10 @@
 import React from "react";
-import axios from 'axios';
 import MovieList from "./components/MovieList/MovieList";
 import {Modal, ModalBody, ModalFooter} from "reactstrap";
 import MovieModal from "./components/MovieModal/MovieModal";
 import tomato from './assets/fresh.png';
 import Filter from "./components/Filter/Filter";
-
-const API_URL = 'https://tomato-279711.ey.r.appspot.com/';
+import apiService from "./apiService";
 
 class App extends React.Component {
     state = {
@@ -21,7 +19,7 @@ class App extends React.Component {
     }
 
     getMovies() {
-        axios.get(API_URL, {params: this.state.filter}).then(res => {
+        apiService.getMovies(this.state.filter).then(res => {
             this.setState({...this.state, movies: res.data.results})
         })
     }
@@ -36,13 +34,13 @@ class App extends React.Component {
 
     showMore() {
         let filter = {...this.state.filter, page: this.state.filter.page + 1};
-        axios.get(API_URL, {params: filter}).then(res => {
+        apiService.getMovies(filter).then(res => {
             this.setState({...this.state, movies: [...this.state.movies, ...res.data.results], filter})
         })
     }
 
     changeFilter(filter) {
-        this.setState({...this.state, filter},()=>{
+        this.setState({...this.state, filter}, () => {
             this.getMovies();
         });
     }
