@@ -6,7 +6,7 @@ import MovieModal from "./components/MovieModal/MovieModal";
 import tomato from './assets/fresh.png';
 import Filter from "./components/Filter/Filter";
 
-const API_URL = 'https://paktusin.ddns.net:8080/';
+const API_URL = 'https://tomato-279711.ey.r.appspot.com/';
 
 class App extends React.Component {
     state = {
