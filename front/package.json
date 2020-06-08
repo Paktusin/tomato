@@ -1,6 +1,7 @@
 {
   "name": "front",
   "version": "0.1.0",
+  "homepage": "https://paktusin.github.io/tomato/",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
@@ -20,7 +21,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "deploy": "PUBLIC_URL=/tomato yarn build && gh-pages -d build"
+    "deploy": "yarn build && gh-pages -d build"
   },
   "eslintConfig": {
     "extends": "react-app"
