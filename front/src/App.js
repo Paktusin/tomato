@@ -48,7 +48,7 @@ class App extends React.Component {
     render() {
         return (
             <div className="container-fluid app">
-                <Filter changeFilter={this.changeFilter.bind(this)}/>
+                    <Filter changeFilter={this.changeFilter.bind(this)}/>
                 <MovieList movies={this.state.movies} movieSelect={this.movieSelect.bind(this)}
                            moreClick={this.showMore.bind(this)}/>
                 <Modal isOpen={this.state.modalOpen} toggle={this.toggleModal.bind(this)}
